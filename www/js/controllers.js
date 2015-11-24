@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('yourAppsName.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -41,16 +41,24 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
+.controller('MyStocksCtrl', ['$scope',
+      function($scope) {
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+      $scope.myStocksArray = [
+        { ticker: "APPL" },
+        { ticker: "GPRO" },
+        { ticker: "FB" },
+        { ticker: "NFLX" },
+        { ticker: "TSLA" },
+        { ticker: "BRK-A" },
+        { ticker: "INTC" }
+      ];
+
+}])
+
+.controller('StockCtrl', ['$scope', '$stateParams',
+
+    function($scope, $stateParams) {
+      $scope.ticker = $stateParams.stockTicker;
+
+}]);
